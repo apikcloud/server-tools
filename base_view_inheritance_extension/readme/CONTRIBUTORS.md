@@ -4,3 +4,4 @@
   - Sergio Teruel
   - Carlos Dauden
 - Iván Todorovich \<<ivan.todorovich@camptocamp.com>\>
+- Frederic Grall \<<fgr@apik.cloud>>

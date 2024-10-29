@@ -30,7 +30,7 @@ def ast_dict_update(source, update):
 
     def ast_key_eq(k1, k2):
         # python < 3.8 uses ast.Str; python >= 3.8 uses ast.Constant
-        if type(k1) != type(k2):
+        if type(k1) is not type(k2):
             return False
         elif isinstance(k1, ast.Str):
             return k1.s == k2.s
@@ -84,16 +84,16 @@ class IrUiView(models.Model):
     @api.model
     def _get_inheritance_handler(self, node):
         handler = super().apply_inheritance_specs
-        if hasattr(self, "inheritance_handler_%s" % node.tag):
-            handler = getattr(self, "inheritance_handler_%s" % node.tag)
+        if hasattr(self, f"inheritance_handler_{node.tag}"):
+            handler = getattr(self, f"inheritance_handler_{node.tag}")
         return handler
 
     @api.model
     def _get_inheritance_handler_attributes(self, node):
         handler = super().apply_inheritance_specs
-        if hasattr(self, "inheritance_handler_attributes_%s" % node.get("operation")):
+        if hasattr(self, f"inheritance_handler_attributes_{node.get('operation')}"):
             handler = getattr(
-                self, "inheritance_handler_attributes_%s" % node.get("operation")
+                self, f"inheritance_handler_attributes_{node.get('operation')}"
             )
         return handler
 

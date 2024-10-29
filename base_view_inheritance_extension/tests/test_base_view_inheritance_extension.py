@@ -104,7 +104,7 @@ class TestBaseViewInheritanceExtension(TransactionCase):
         ]
         self.assertEqual(
             res.xpath('//field[@name="invoice_line_ids"]')[0].attrib["context"],
-            "{%s}" % ", ".join(expected_items),
+            "{%s}" % ", ".join(expected_items),  # noqa: UP031
         )
 
     def test_update_attrs_new_key(self):
